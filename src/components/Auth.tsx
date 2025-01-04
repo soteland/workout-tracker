@@ -1,5 +1,5 @@
 
-import Turnstile, { useTurnstile } from 'react-turnstile';
+import Turnstile from 'react-turnstile';
 import supabase from '../hooks/supabase'
 import { useState } from "react";
 
@@ -19,9 +19,6 @@ export default function Auth() {
         });
         console.log(data, error);
     };
-
-    const turnstile = useTurnstile();
-
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
