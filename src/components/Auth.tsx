@@ -6,9 +6,10 @@ import { useState } from "react";
 export default function Auth() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [turnstileSuccess, setTurnstileSuccess] = useState(false);
 
     const handleLogin = async () => {
-        if (turnstile) return
+        if (!turnstileSuccess) return
 
         if (!email || !password) return;
 
@@ -42,10 +43,9 @@ export default function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="mt-2 p-2 border rounded mb-4"
                 />
-                <Turnstile sitekey='0x4AAAAAAA4kcKs0GW2Ic0ke' />
+                <Turnstile sitekey='0x4AAAAAAA4kcKs0GW2Ic0ke' onSuccess={() => { setTurnstileSuccess(true) }} />
                 <button
-                    disabled={!turnstile}
-
+                    disabled={!turnstileSuccess}
                     onClick={handleLogin}
                     className="mt-2 p-2 bg-blue-500 text-white rounded"
                 >
