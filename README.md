@@ -15,7 +15,7 @@ Denne appen skal superenkelt å spore trening. For personlig bruk.
 
 ## Åh, ja, vi har et eget domene også via CloudFlare
 
-Gå til [https://amongus.soteland.no](https://workout.soteland.no) for å registrere trening.
+Gå til [https://workout.soteland.no](https://workout.soteland.no) for å registrere trening.
 
 ## Hva er poenget?
 
