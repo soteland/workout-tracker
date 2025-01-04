@@ -1,6 +1,6 @@
 # Workout Tracker
 
-![GitHub repo size](https://img.shields.io/github/repo-size/soteland/workout)
+![GitHub repo size](https://img.shields.io/github/repo-size/soteland/workout-tracker)
 
 Denne appen skal superenkelt å spore trening. For personlig bruk. 
 
