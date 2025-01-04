@@ -7,10 +7,11 @@ interface Props {
     setShowLegend: (showLegend: boolean) => void;
     getWorkouts: () => void;
     showLegend: boolean;
-    idForUpdate: number;
+    idForUpdate: number
+    setIdForUpdate: (id: number) => void;
 }
 
-export const WorkoutUpdate = ({ setShowLegend, getWorkouts, showLegend, idForUpdate }: Props) => {
+export const WorkoutUpdate = ({ setShowLegend, getWorkouts, showLegend, idForUpdate, setIdForUpdate }: Props) => {
 
     const [pushups, setPushups] = useState(0);
     const [pullups, setPullups] = useState(0);
@@ -50,7 +51,7 @@ export const WorkoutUpdate = ({ setShowLegend, getWorkouts, showLegend, idForUpd
 
     return (
         <div className='flex flex-col items-center justify-center 
-        border bg-neutral-800 border-neutral-700 my-4 mx-4 rounded-lg shadow-lg p-4 pb-8 pt-6 text-neutral-100'>
+        border bg-sky-950 border-sky-800 my-4 mx-4 rounded-lg shadow-lg p-4 pb-8 pt-6 text-neutral-100'>
             <h1 className='text-neutral-200 text-4xl mb-8 mt-2'>Workout Update
                 <span className='cursor-pointer' onClick={() => setShowLegend(!showLegend)}>{showLegend ? "🙂" : "😉"}</span>
             </h1>
@@ -131,9 +132,12 @@ export const WorkoutUpdate = ({ setShowLegend, getWorkouts, showLegend, idForUpd
                 />
             </div>
 
-            <Button onClick={() => updateWorkout()}>
-                Update log
-            </Button>
+            <div className="flex gap-2">
+                <Button onClick={() => updateWorkout()}>
+                    Update log
+                </Button>
+                <Button onClick={() => setIdForUpdate(0)}>Avbryt</Button>
+            </div>
 
         </div >
     );

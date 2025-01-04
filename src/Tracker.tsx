@@ -33,17 +33,31 @@ function Tracker() {
         <div>
 
             {idForUpdate != 0 &&
-                <WorkoutUpdate getWorkouts={getWorkouts} showLegend={showLegend} setShowLegend={setShowLegend} idForUpdate={idForUpdate} />
+                <WorkoutUpdate
+                    getWorkouts={getWorkouts}
+                    showLegend={showLegend}
+                    setShowLegend={setShowLegend}
+                    idForUpdate={idForUpdate}
+                    setIdForUpdate={setIdForUpdate} />
             }
+
             {idForUpdate == 0 &&
-                <WorkoutLogging getWorkouts={getWorkouts} showLegend={showLegend} setShowLegend={setShowLegend} />
+                <WorkoutLogging
+                    getWorkouts={getWorkouts}
+                    showLegend={showLegend}
+                    setShowLegend={setShowLegend} />
             }
 
             <div className='flex flex-col items-center justify-center my-4 mx-auto'>
 
-                <WorkoutStatsTable workouts={workouts} />
+                <WorkoutStatsTable
+                    workouts={workouts} />
 
-                <WorkoutsTable workouts={workouts} getWorkouts={getWorkouts} showLegend={showLegend} setIdForUpdate={setIdForUpdate} />
+                <WorkoutsTable
+                    workouts={workouts}
+                    getWorkouts={getWorkouts}
+                    showLegend={showLegend}
+                    setIdForUpdate={setIdForUpdate} />
 
                 <Button onClick={() => supabase.auth.signOut()}>Sign Out</Button>
 

@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function Auth() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [turnstileSuccess, setTurnstileSuccess] = useState(false);
+    const [turnstileSuccess, setTurnstileSuccess] = useState(true);
 
     const handleLogin = async () => {
         if (!turnstileSuccess) return
@@ -21,9 +21,9 @@ export default function Auth() {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white p-8 rounded flex flex-col shadow-lg">
-                <div className="flex justify-center mt-4 mb-8">
+        <div className="fixed inset-0 flex items-center justify-center bg-neutral-900 bg-opacity-50">
+            <div className="bg-neutral-800 border-neutral-700 border p-6 rounded flex flex-col shadow-lg">
+                <div className="flex justify-center mt-2 mb-8">
                     <span className='text-4xl'>💪</span>
                 </div>
                 <input
@@ -31,20 +31,20 @@ export default function Auth() {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="p-2 border rounded mb-2"
+                    className="p-2 border rounded mb-4 bg-neutral-900 border-neutral-600 text-neutral-100"
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="mt-2 p-2 border rounded mb-4"
+                    className="p-2 border rounded mb-4 bg-neutral-900 border-neutral-600 text-neutral-100"
                 />
-                <Turnstile sitekey='0x4AAAAAAA4kcKs0GW2Ic0ke' onSuccess={() => { setTurnstileSuccess(true) }} />
+                <Turnstile sitekey='0x4AAAAAAA4kcKs0GW2Ic0ke' onError={() => { setTurnstileSuccess(true) }} />
                 <button
                     disabled={!turnstileSuccess}
                     onClick={handleLogin}
-                    className="mt-2 p-2 bg-blue-500 text-white rounded"
+                    className="mt-2 mb-2 p-2 bg-sky-600 text-white rounded"
                 >
                     Login
                 </button>
