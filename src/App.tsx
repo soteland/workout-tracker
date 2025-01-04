@@ -19,7 +19,8 @@ function App() {
     checkAuth();
 
     // Subscribe to auth changes
-    const { data: { subscription }, } = supabase.auth.onAuthStateChange((session) => {
+    const { data: { subscription }, } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log(event)
       setIsAuthenticated(!!session);
     });
 

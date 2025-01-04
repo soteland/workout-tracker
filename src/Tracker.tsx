@@ -173,25 +173,27 @@ function Tracker() {
                                 <th className='px-4 py-2'>🗙</th>
                             </tr>
                         </thead>
-                        {workouts.map((workout) => (
-                            <tr key={workout.id}>
-                                <td className='px-4 py-2'>{workout.date.substring(0, 10)}</td>
-                                <td className='px-4 py-2'>{workout.pushups}</td>
-                                <td className='px-4 py-2'>{workout.pullups}</td>
-                                <td className='px-4 py-2'>{workout.situps}</td>
-                                <td className='px-4 py-2'>{workout.burpees ? "✅" : ""}</td>
-                                <td className='px-4 py-2'>{workout.biking ? "✅" : ""}</td>
-                                <td className='px-4 py-2'>{workout.weightlifting}</td>
-                                <td className='px-4 py-2'>
-                                    <Button onClick={async () => {
-                                        await supabase.from('workouts').delete().eq('id', workout.id).then(() => {
-                                            getTodos()
-                                        })
-                                    }}
-                                    >{showLegend ? "Slett" : "🗙"}</Button>
-                                </td>
-                            </tr>
-                        ))}
+                        <tbody>
+                            {workouts.map((workout) => (
+                                <tr key={workout.id}>
+                                    <td className='px-4 py-2'>{workout.date.substring(0, 10)}</td>
+                                    <td className='px-4 py-2'>{workout.pushups}</td>
+                                    <td className='px-4 py-2'>{workout.pullups}</td>
+                                    <td className='px-4 py-2'>{workout.situps}</td>
+                                    <td className='px-4 py-2'>{workout.burpees ? "✅" : ""}</td>
+                                    <td className='px-4 py-2'>{workout.biking ? "✅" : ""}</td>
+                                    <td className='px-4 py-2'>{workout.weightlifting}</td>
+                                    <td className='px-4 py-2'>
+                                        <Button onClick={async () => {
+                                            await supabase.from('workouts').delete().eq('id', workout.id).then(() => {
+                                                getTodos()
+                                            })
+                                        }}
+                                        >{showLegend ? "Slett" : "🗙"}</Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 </div>
 
@@ -208,14 +210,16 @@ function Tracker() {
                                 <th className='px-4 py-2'>🏋️</th>
                             </tr>
                         </thead>
-                        <tr>
-                            <td className='px-4 py-2'>{workoutStat.pushups}</td>
-                            <td className='px-4 py-2'>{workoutStat.pullups}</td>
-                            <td className='px-4 py-2'>{workoutStat.situps}</td>
-                            <td className='px-4 py-2'>{workoutStat.burpees}</td>
-                            <td className='px-4 py-2'>{workoutStat.biking}</td>
-                            <td className='px-4 py-2'>{workoutStat.weightlifting}</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td className='px-4 py-2'>{workoutStat.pushups}</td>
+                                <td className='px-4 py-2'>{workoutStat.pullups}</td>
+                                <td className='px-4 py-2'>{workoutStat.situps}</td>
+                                <td className='px-4 py-2'>{workoutStat.burpees}</td>
+                                <td className='px-4 py-2'>{workoutStat.biking}</td>
+                                <td className='px-4 py-2'>{workoutStat.weightlifting}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
 
@@ -228,7 +232,7 @@ function Tracker() {
                     </footer>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 export default Tracker
