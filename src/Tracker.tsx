@@ -66,7 +66,7 @@ function Tracker() {
         <div>
             <div className='flex flex-col items-center justify-center 
         border bg-neutral-900 border-neutral-700 my-4 mx-4 rounded-lg shadow-lg p-4 pb-8 pt-6 text-neutral-100'>
-                <h1 className='text-neutral-200 text-4xl mb-4'>Workout Tracker
+                <h1 className='text-neutral-200 text-4xl mb-8 mt-2'>Workout Tracker
                     <span className='cursor-pointer' onClick={() => setShowLegend(!showLegend)}>{showLegend ? "🙂" : "😉"}</span>
                 </h1>
                 <div className='flex gap-2 mb-4 '>
@@ -220,6 +220,13 @@ function Tracker() {
                 </div>
 
                 <Button onClick={() => supabase.auth.signOut()}>Sign Out</Button>
+
+                <div className='mt-8 mb-4'>
+                    <footer className='text-neutral-500 text-center'>
+                        &copy; {new Date().getFullYear()} Workout Tracker by <a href="https://github.com/soteland">soteland</a> <br></br>
+                        <a href="https://github.com/soteland/workout-tracker">github.com/soteland/workout-tracker</a>
+                    </footer>
+                </div>
             </div>
         </div>
     )

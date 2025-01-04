@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# Workout Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![GitHub repo size](https://img.shields.io/github/repo-size/soteland/workout)
 
-Currently, two official plugins are available:
+Denne appen skal superenkelt å spore trening. For personlig bruk. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overkomplisering deluxe
 
-## Expanding the ESLint configuration
+1. Appen er laget i React, med Vite som byggeverktøy.
+2. Appen bruker typescript
+3. Appen bruker tailwind
+4. Appen bruker github pages
+5. Appen bygges automatisk på push til main
+6. Appen bruker sikkert alt for mange pakker og styr og stell
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Åh, ja, vi har et eget domene også via CloudFlare
 
-- Configure the top-level `parserOptions` property like this:
+Gå til [https://amongus.soteland.no](https://workout.soteland.no) for å registrere trening.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Hva er poenget?
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+For gøy, og for å lage en superenkel treningsapp. Ekstra motivasjon for å trene også, merkelig nok.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Brukte du AI?
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Nei, eller ja. Jeg brukte Copilot i VS Code.
+
+## Kan jeg bruke den? 
+Ja, bruk, kopier, endre, publiser, tjen penger på den. Hva du vil! Skulle du ha lyst til å spandere en kaffe eller en pi1s så er det bare å sende en melding. Kodeprat skal vi alltids finne tid til.
