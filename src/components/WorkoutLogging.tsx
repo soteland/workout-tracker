@@ -7,9 +7,10 @@ interface Props {
     setShowLegend: (showLegend: boolean) => void;
     getWorkouts: () => void;
     showLegend: boolean;
+    setSaveSuccess: (saveSuccess: boolean) => void;
 }
 
-export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend }: Props) => {
+export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend, setSaveSuccess }: Props) => {
 
     const [pushups, setPushups] = useState(0);
     const [pullups, setPullups] = useState(0);
@@ -29,7 +30,10 @@ export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend }: Props
             weightlifting,
         });
         if (error) alert(error.message);
-        else getWorkouts();
+        else {
+            setSaveSuccess(true);
+            getWorkouts()
+        };
     };
 
     return (
@@ -48,9 +52,8 @@ export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend }: Props
                     className="ml-2 p-1 w-12 border rounded bg-neutral-800 border-neutral-600"
                 />
                 <Button onClick={() => setPushups(0)}>x</Button>
-                <Button onClick={() => setPushups(10)}>10</Button>
-                <Button onClick={() => setPushups(15)}>15</Button>
-                <Button onClick={() => setPushups(20)}>20</Button>
+                <Button onClick={() => setPushups(pushups + 5)}>+5</Button>
+                <Button onClick={() => setPushups(pushups + 10)}>+10</Button>
             </div>
             <div className='flex gap-2 mb-4'>
                 <Label id='pullups' text='Pullups' emoji='💪' showLegend={showLegend} />
@@ -62,9 +65,8 @@ export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend }: Props
                     className="ml-2 p-1  w-12 border rounded bg-neutral-800 border-neutral-600"
                 />
                 <Button onClick={() => setPullups(0)}>x</Button>
-                <Button onClick={() => setPullups(10)}>10</Button>
-                <Button onClick={() => setPullups(15)}>15</Button>
-                <Button onClick={() => setPullups(20)}>20</Button>
+                <Button onClick={() => setPullups(pullups + 5)}>+5</Button>
+                <Button onClick={() => setPullups(pullups + 10)}>+10</Button>
             </div>
             <div className='flex gap-2 mb-4'>
                 <Label id='sitpus' text='Situps' emoji='🫃' showLegend={showLegend} />
@@ -76,9 +78,8 @@ export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend }: Props
                     className="ml-2 p-1  w-12 border rounded bg-neutral-800 border-neutral-600"
                 />
                 <Button onClick={() => setSitups(0)}>x</Button>
-                <Button onClick={() => setSitups(10)}>10</Button>
-                <Button onClick={() => setSitups(15)}>15</Button>
-                <Button onClick={() => setSitups(20)}>20</Button>
+                <Button onClick={() => setSitups(situps + 5)}>+5</Button>
+                <Button onClick={() => setSitups(situps + 10)}>+10</Button>
             </div>
             <div className='flex gap-2 mb-4'>
                 <Label id='burpees' text='Burpees' emoji='🧎‍♂️' showLegend={showLegend} />
@@ -90,9 +91,8 @@ export const WorkoutLogging = ({ setShowLegend, getWorkouts, showLegend }: Props
                     className="ml-2 p-1  w-12 border rounded bg-neutral-800 border-neutral-600"
                 />
                 <Button onClick={() => setBurpees(0)}>x</Button>
-                <Button onClick={() => setBurpees(10)}>10</Button>
-                <Button onClick={() => setBurpees(15)}>15</Button>
-                <Button onClick={() => setBurpees(20)}>20</Button>
+                <Button onClick={() => setBurpees(burpees + 5)}>+5</Button>
+                <Button onClick={() => setBurpees(burpees + 10)}>+10</Button>
             </div>
             <div className='flex gap-2 mb-4 items-center' title='Biking'>
                 <Label id='biking' text='Biking' emoji='🚴' showLegend={showLegend} />

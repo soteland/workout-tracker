@@ -11,7 +11,7 @@ interface Props {
 export const WorkoutsTable = ({ workouts, getWorkouts, showLegend, setIdForUpdate }: Props) => {
 
     return (
-        <div className='mt-8 mb-8 overflow-x-scroll w-full p-4'>
+        <div className='mt-8 mb-8 overflow-x-scroll w-full p-4 scrollbar '>
             <h2 className='text-neutral-200 text-2xl mb-4 text-center'>Workout list</h2>
             <table className='bg-neutral-700 text-neutral-200 rounded-md mb-4'>
                 <thead>

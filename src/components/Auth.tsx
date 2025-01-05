@@ -3,6 +3,10 @@ import Turnstile from 'react-turnstile';
 import supabase from '../hooks/supabase'
 import { useState } from "react";
 
+const isLocalhost = (): boolean => {
+    return window.location.hostname === "localhost";
+};
+
 export default function Auth() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -40,7 +44,12 @@ export default function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="p-2 border rounded mb-4 bg-neutral-900 border-neutral-600 text-neutral-100"
                 />
-                <Turnstile sitekey='0x4AAAAAAA4kcKs0GW2Ic0ke' onError={() => { setTurnstileSuccess(true) }} />
+                {!isLocalhost() &&
+                    <Turnstile sitekey='0x4AAAAAAA4kcKs0GW2Ic0ke' onError={() => {
+                        console.log("SUCCESS")
+                        setTurnstileSuccess(true)
+                    }} />
+                }
                 <button
                     disabled={!turnstileSuccess}
                     onClick={handleLogin}

@@ -5,3 +5,8 @@
 body {
     @apply bg-neutral-900;
 }
+
+.scrollbar {
+    scrollbar-color: #222 #444;
+    scrollbar-width: thin;
+}

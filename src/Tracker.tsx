@@ -7,11 +7,24 @@ import { WorkoutStatsTable } from './components/WorkoutStatsTable';
 import { WorkoutsTable } from './components/WorkoutsTable';
 import { WorkoutLogging } from './components/WorkoutLogging';
 import { WorkoutUpdate } from './components/WorkoutUpdate';
+import ReactConfetti from 'react-confetti';
 
 function Tracker() {
     const [workouts, setWorkouts] = useState<Tables<'workouts'>[]>([])
     const [showLegend, setShowLegend] = useState(false);
     const [idForUpdate, setIdForUpdate] = useState(0);
+
+    const [saveSuccess, setSaveSuccess] = useState(false)
+
+    const [viewportSize, setViewportSize] = useState([window.innerWidth, document.documentElement.clientHeight])
+
+    useEffect(() => {
+        if (saveSuccess) {
+            setTimeout(() => {
+                setSaveSuccess(false)
+            }, 5000)
+        }
+    }, [saveSuccess])
 
     async function getWorkouts() {
         const { data: workouts } = await supabase.from('workouts').select()
@@ -27,10 +40,17 @@ function Tracker() {
 
     useEffect(() => {
         getWorkouts()
+        setViewportSize([window.innerWidth, document.documentElement.clientHeight])
     }, [])
 
     return (
         <div>
+            {saveSuccess &&
+                <ReactConfetti
+                    width={viewportSize[0]}
+                    height={viewportSize[1]}
+                    recycle={false} />
+            }
 
             {idForUpdate != 0 &&
                 <WorkoutUpdate
@@ -38,14 +58,16 @@ function Tracker() {
                     showLegend={showLegend}
                     setShowLegend={setShowLegend}
                     idForUpdate={idForUpdate}
-                    setIdForUpdate={setIdForUpdate} />
+                    setIdForUpdate={setIdForUpdate}
+                    setSaveSuccess={setSaveSuccess} />
             }
 
             {idForUpdate == 0 &&
                 <WorkoutLogging
                     getWorkouts={getWorkouts}
                     showLegend={showLegend}
-                    setShowLegend={setShowLegend} />
+                    setShowLegend={setShowLegend}
+                    setSaveSuccess={setSaveSuccess} />
             }
 
             <div className='flex flex-col items-center justify-center my-4 mx-auto'>
